@@ -466,6 +466,76 @@ md"""
 #### 1.3.3. Multilevel models.
 """
 
+# ╔═╡ 9ee32b3c-e640-49f3-820d-22f456988fdd
+md"""
+
+---
+
+What this means is that any particular parameter can be usefully regarded as a placeholder for a missing model. Given some model of how the parameter gets its value, it is simple enough to embed the new model inside the old one. This results in a model with multiple levels of uncertainty, each feeding into the next—a multilevel model.
+
+Like Bayesian data analysis, multilevel modeling is not particularly new, but it has only been available on desktop computers for a few decades. And since such models have a natural Bayesian representation, they have grown hand-in-hand with Bayesian data analysis.
+
+We will be interested in multilevel models primarily because they help us deal with overfitting. Cross-validation and information criteria measure overfitting risk and help us to recognize it. But multilevel models actually do something about it. What they do is exploit an amazing statistical trick known as partial pooling that pools information across units in the data in order to produce better estimates for all units.
+
+---
+
+Це означає, що будь-який конкретний параметр можна розглядати як заповнювач для відсутньої моделі. Враховуючи модель того, як параметр отримує своє значення, досить просто вбудувати нову модель у стару. Це призводить до моделі з кількома рівнями невизначеності, кожен з яких переходить у наступний — багаторівнева модель.
+
+Як і байєсівський аналіз даних, багаторівневе моделювання не є новим, але воно доступне на настільних комп’ютерах лише кілька десятиліть. А оскільки такі моделі мають природне байєсівське представлення, вони росли рука об руку з байєсівським аналізом даних.
+
+Багаторівневі моделі нам будуть цікаві в першу чергу тому, що вони допомагають впоратися з надмірним налаштуванням. Перехресна перевірка та інформаційні критерії вимірюють ризик надмірного налаштування та допомагають нам його розпізнати. Але багаторівневі моделі насправді можуть дещо з цим зробити. Вони використовують дивовижний статистичний трюк, відомий як часткове об’єднання, який об’єднує інформацію про одиниці в даних, щоб отримати кращі оцінки для всіх одиниць.
+
+---
+
+"""
+
+# ╔═╡ 608b16c3-83a9-4b0b-9176-4a93dabf571b
+md"""
+
+---
+
+Partial pooling is the key technology, and the contexts in which it is appropriate are diverse. Here are four commonplace examples.
+
+(1) To adjust estimates for repeat sampling. When more than one observation arises from the same individual, location, or time, then traditional, single-level models may mislead us.
+
+(2) To adjust estimates for imbalance in sampling. When some individuals, locations, or times are sampled more than others, we may also be misled by single-level models.
+
+(3) To study variation. If our research questions include variation among individuals or other groups within the data, then multilevel models are a big help, because they model variation explicitly.
+
+(4) To avoid averaging. Frequently, scholars pre-average some data to construct variables for a regression analysis. This can be dangerous, because averaging removes variation. It therefore manufactures false confidence. Multilevel models allow us to preserve the uncertainty in the original, pre-averaged values, while still using the average to make predictions.
+
+---
+
+Часткове об’єднання є ключовою технологією, і контексти, у яких це доречно, різноманітні. Ось чотири банальних приклади.
+
+(1) Для коригування оцінок повторного відбору проб. Коли кілька спостережень виникають від одного об'єкту, місця чи часу, традиційні однорівневі моделі можуть ввести нас в оману.
+
+(2) Для коригувати оцінки дисбалансу у вибірці. Коли деякі об'єкти, місця чи час відбираються частіше, ніж інші, однорівневі моделі також можуть ввести нас в оману.
+
+(3) Для вивчення варіації. Якщо наші дослідження включають варіації між окремими об'єктами чи іншими групами в межах даних, тоді багаторівневі моделі є великою підмогою, оскільки вони явно моделюють варіації.
+
+(4) Щоб уникнути усереднення. Часто вчені попередньо усереднюють деякі дані для побудови змінних для регресійного аналізу. Це може бути небезпечно, оскільки усереднення усуває варіацію. Тому це породжує помилкову довіру. Багаторівневі моделі дозволяють нам зберегти невизначеність початкових, попередньо усереднених значень, водночас використовуючи середнє для прогнозування.
+
+---
+"""
+
+# ╔═╡ ade0974b-8c58-49ae-9cbf-8c5fbd21d6d5
+md"""
+
+---
+
+	Rethinking: Multilevel election forecasting. One of the older applications of multilevel modeling is to forecast the outcomes of democratic elections. In the early 1960s, John Tukey (1915–2000) began working for the National Broadcasting Company (NBC) in the United States, developing real-time election prediction models that could exploit diverse types of data: polls, past elections, partial results, and complete results from related districts. The models used a multilevel framework similar to the models presented in Chapters 13 and 14. Tukey developed and used such models for NBC through 1978. Contemporary election prediction and poll aggregation remains an active topic for multilevel modeling.
+
+---
+
+	Переосмислення: багаторівневе прогнозування виборів. Одним із давніх застосувань багаторівневого моделювання є прогнозування результатів демократичних виборів. На початку 1960-х років Джон Тьюкі (1915–2000) почав працювати в Національній телерадіомовній компанії (NBC) у Сполучених Штатах, розробляючи моделі прогнозування виборів у реальному часі, які могли використовувати різні типи даних: опитування, минулі вибори, часткові результати, і повні результати з відповідних районів. Моделі використовували багаторівневу структуру, подібну до моделей, представлених у розділах 13 і 14. Тьюкі розробив і використовував такі моделі для NBC до 1978 року. Сучасне прогнозування виборів і агрегація опитувань залишається активною темою для багаторівневого моделювання.
+
+---
+"""
+
+# ╔═╡ 138a46c2-3032-465e-83db-3ebc03004488
+
+
 # ╔═╡ b187369f-19ca-4533-8638-41b5d9709af4
 md"""
 #### 1.3.4. Graphical causal models.
@@ -735,7 +805,11 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╟─344ea1f4-1465-4f9a-8913-4d136d73f17a
 # ╟─5271b679-9753-4e96-9803-b6728eed6c5a
 # ╟─68aaf256-cb89-43d4-8ed5-1ff0fd3cc0f0
-# ╠═6efa8240-e801-4463-b2a6-366bfbb57a41
+# ╟─6efa8240-e801-4463-b2a6-366bfbb57a41
+# ╟─9ee32b3c-e640-49f3-820d-22f456988fdd
+# ╟─608b16c3-83a9-4b0b-9176-4a93dabf571b
+# ╟─ade0974b-8c58-49ae-9cbf-8c5fbd21d6d5
+# ╠═138a46c2-3032-465e-83db-3ebc03004488
 # ╠═b187369f-19ca-4533-8638-41b5d9709af4
 # ╠═4ebec233-0a9a-41dc-80d0-08339b3b3dd8
 # ╟─00000000-0000-0000-0000-000000000001
