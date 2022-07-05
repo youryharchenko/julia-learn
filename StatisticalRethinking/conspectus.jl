@@ -533,17 +533,108 @@ md"""
 ---
 """
 
-# ╔═╡ 138a46c2-3032-465e-83db-3ebc03004488
-
-
 # ╔═╡ b187369f-19ca-4533-8638-41b5d9709af4
 md"""
 #### 1.3.4. Graphical causal models.
 """
 
+# ╔═╡ b14bde05-d4b8-4d3e-977a-dd27ea887218
+md"""
+
+---
+
+When the wind blows, branches sway. If you are human, you immediately interpret this statement as causal: The wind makes the branches move. But all we see is a statistical association. From the data alone, it could also be that the branches swaying makes the wind. That conclusion seems foolish, because you know trees do not sway their own branches. A statistical model is an amazing association engine. It makes it possible to detect associations between causes and their effects. But a statistical model is never sufficient for inferring cause, because the statistical model makes no distinction between the wind causing the branches to sway and the branches causing the wind to blow. Facts outside the data are needed to decide which explanation is correct.
+
+Now we turn to a secondary paradox in prediction: Models that are causally incorrect can make better predictions than those that are causally correct. As a result, focusing on prediction can systematically mislead us.
+
+---
+
+Коли вітер дме, гілки гойдаються. Якщо ви людина, ви негайно інтерпретуєте це твердження як причинно-наслідковий зв’язок: вітер змушує гілки рухатися. Але все, що ми бачимо, це статистична асоціація. Виходячи лише з даних, також можна зробити висновок, що коливання гілок викликає вітер. Цей висновок здається дурним, адже ви знаєте, що дерева не коливають своїх гілок. Статистична модель — це дивовижний механізм асоціацій. Він дає змогу виявити асоціації між причинами та їх наслідками. Але статистичної моделі ніколи не вистачає для висновку про причину, тому що статистична модель не робить різниці між вітром, який змушує гілки колихатися, і гілками, які викликають вітер. Щоб вирішити, яке пояснення є правильним, необхідні факти поза даними.
+
+Тепер ми звернемося до іншого парадоксу в передбаченні: моделі, які причинно неправильні, можуть робити кращі прогнози, ніж ті, які причинно правильні. У результаті зосередження на передбаченні може систематично вводити нас в оману.
+
+---
+
+"""
+
+# ╔═╡ 8446d704-3cf4-49a5-a2e9-6826a328915e
+md"""
+
+---
+
+We’ll use a graphical causal model to represent a causal hypothesis. The simplest graphical causal model is a directed acyclic graph, usually called a DAG. DAGs are heuristic—they are not detailed statistical models. But they allow us to deduce which statistical models can provide valid causal inferences, assuming the DAG is true.
+
+---
+
+Ми будемо використовувати графічну причинно-наслідкову модель для представлення причинно-наслідкової гіпотези. Найпростішою графічною причинно-наслідковою моделлю є спрямований ациклічний граф, який зазвичай називають DAG. Такі графи є евристичними — вони не є детальними статистичними моделями. Але вони дозволяють нам зробити висновок, які статистичні моделі можуть надати дійсні причинно-наслідкові висновки, припускаючи, що DAG вірний.
+
+---
+
+"""
+
+# ╔═╡ 1eccd565-0ab8-481f-aab8-fdbc5b096be2
+md"""
+
+---
+
+	Rethinking: Causal salad. Causal inference requires a causal model that is separate from the statistical model. The data are not enough. Every philosophy agrees upon that much. Responses however are diverse. The most conservative response is to declare “causation” to be unprovable mental candy, like debating the nature of the afterlife. Slightly less conservative is to insist that cause can only be inferred under strict conditions of randomization and experimental control. This would be very limiting. Many scientific questions can never be studied experimentally—human evolution, for example. Many others could in principle be studied experimentally, but it would be unethical to do so. And many experiments are really just attempts at control—patients do not always take their medication.
+	
+	But the approach which dominates in many parts of biology and the social sciences is instead causal salad. Causal salad means tossing various “control” variables into a statistical model, observing changes in estimates, and then telling a story about causation. Causal salad seems founded on the notion that only omitted variables can mislead us about causation. But included variables can just as easily confound us. When tossing a causal salad, a model that makes good predictions may still mislead about causation. If we use the model to plan an intervention, it will get everything wrong. There will be examples in later chapters.
+
+---
+
+	Переосмислення: причинно-наслідковий салат. Причинно-наслідковий висновок вимагає причинної моделі, яка є окремою від статистичної моделі. Даних недостатньо. Кожна філософія погоджується з цим. Однак відповіді різноманітні. Найконсервативніша відповідь — оголосити «причинно-наслідковий зв’язок» розумовою цукеркою, яку неможливо довести, як дискусії про природу загробного життя. Трохи менш консервативним є наполягання на тому, що причину можна встановити лише за суворих умов рандомізації та експериментального контролю. Це було б дуже обмежуючим. Багато наукових питань неможливо дослідити експериментально — наприклад, еволюція людини. Багато інших, у принципі, можна досліджувати експериментально, але робити це було б неетично. І багато експериментів насправді є лише спробами контролю — пацієнти не завжди приймають ліки.
+	
+	Але підхід, який домінує в багатьох частинах біології та соціальних наук, натомість є причинно-наслідковим салатом. Причинно-наслідковий салат означає підкидання різних «контрольних» змінних у статистичну модель, спостереження за змінами в оцінках, а потім розповідь про причинно-наслідковий зв’язок. Причинний салат, здається, заснований на уявленні про те, що лише пропущені змінні можуть ввести нас в оману щодо причинно-наслідкового зв’язку. Але включені змінні можуть так само легко заплутати нас. Змішуючи причинно-наслідковий салат, модель, яка робить хороші прогнози, все одно може ввести в оману щодо причинно-наслідкового зв’язку. Якщо ми використовуємо модель для планування діяльності, все буде неправильно. У наступних розділах будуть приклади.
+
+---
+
+"""
+
 # ╔═╡ 4ebec233-0a9a-41dc-80d0-08339b3b3dd8
 md"""
 ### 1.4. Summary
+"""
+
+# ╔═╡ e940821a-8a8d-412f-9e6f-9365be881255
+md"""
+
+---
+
+This first chapter has argued for a rethinking of popular statistical and scientific philosophy. Instead of choosing among various black-box tools for testing null hypotheses, we should learn to build and analyze multiple non-null models of natural phenomena. To support this goal, the chapter introduced Bayesian inference, model comparison, multilevel models, and graphical causal models. The remainder of the book is organized into four interdependent parts.
+
+(1) Chapters 2 and 3 are foundational. They introduce Bayesian inference and the basic tools for performing Bayesian calculations. They move quite slowly and emphasize a purely logical interpretation of probability theory.
+
+(2) The next four chapters, 4 through 9, build multiple linear regression as a Bayesian tool. This tool supports causal inference, but only when we analyze separate causal models that help us determine which variables to include. These chapters emphasize plotting results instead of attempting to interpret estimates of individual parameters. Problems of model complexity—overfitting—also feature prominently.
+So you’ll also get an introduction to information theory and formal model comparison in Chapter 7.
+
+(3) The third part of the book, Chapters 9 through 12, presents generalized linear models of several types. Chapter 9 introduces Markov chain Monte Carlo, used to fit the models in later chapters. Chapter 10 introduces maximum entropy as an explicit procedure to help us design and interpret these models. Then Chapters 11 and 12 detail the models themselves.
+
+(4) The last part, Chapters 13 through 16, gets around to multilevel models, as well as specialized models that address measurement error, missing data, and spatial correlation. This material is fairly advanced, but it proceeds in the same mechanistic way as earlier material. Chapter 16 departs from the rest of the book in deploying models which are not of the generalized linear type but are rather theoretical models expressed directly as statistical models.
+
+The final chapter, Chapter 17, returns to some of the issues raised in this first one.
+
+---
+
+У першому розділі йдеться про необхідність переосмислення популярної статистичної та наукової філософії. Замість того, щоб вибирати серед різних інструментів чорні скриньки для перевірки нульових гіпотез, ми маємо навчитися створювати й аналізувати численні ненульові моделі природних явищ. Щоб підтримати цю мету, у розділі було представлено байєсівський висновок, порівняння моделей, багаторівневі моделі та графічні причинно-наслідкові моделі. Решта книги складається з чотирьох взаємозалежних частин.
+
+(1) Розділи 2 і 3 є основоположними. Вони знайомлять із байєсівським висновком і основними інструментами для виконання байєсівських обчислень. Вони рухаються досить повільно і підкреслюють суто логічне тлумачення теорії ймовірностей.
+
+(2) У наступних чотирьох розділах, з 4 по 9, будується множинна лінійна регресія як байєсівський інструмент. Цей інструмент підтримує причинно-наслідковий висновок, але лише тоді, коли ми аналізуємо окремі причинно-наслідкові моделі, які допомагають нам визначити, які змінні включити. У цих розділах наголошується на побудові результатів замість спроби інтерпретації оцінок окремих параметрів. Проблеми складності моделі — надмірні налаштування — також займають важливе місце.
+Тож ви також отримаєте вступ до теорії інформації та формального порівняння моделей у розділі 7.
+
+(3) Третя частина книги, розділи з 9 по 12, представляє узагальнені лінійні моделі кількох типів. Розділ 9 представляє ланцюг Маркова Монте-Карло, який використовується для підгонки моделей у наступних розділах. Розділ 10 представляє максимальну ентропію як явну процедуру, яка допоможе нам розробити та інтерпретувати ці моделі. Потім розділи 11 і 12 детально описують самі моделі.
+
+(4) Остання частина, розділи з 13 по 16, розповідає про багаторівневі моделі, а також про спеціалізовані моделі, які вирішують помилки вимірювання, відсутні дані та просторову кореляцію. Цей матеріал досить просунутий, але він розвивається таким же механізмом, як і попередній матеріал. Розділ 16 відрізняється від решти книги розгортанням моделей, які не є узагальненим лінійним типом, а є скоріше теоретичними моделями, вираженими безпосередньо як статистичні моделі.
+
+Останній розділ, розділ 17, повертається до деяких питань, порушених у цьому першому.
+
+---
+"""
+
+# ╔═╡ 72058069-368f-4860-9baa-f6e3d51406b4
+md"""
+## 2 Small Worlds and Large Worlds
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -809,8 +900,12 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╟─9ee32b3c-e640-49f3-820d-22f456988fdd
 # ╟─608b16c3-83a9-4b0b-9176-4a93dabf571b
 # ╟─ade0974b-8c58-49ae-9cbf-8c5fbd21d6d5
-# ╠═138a46c2-3032-465e-83db-3ebc03004488
-# ╠═b187369f-19ca-4533-8638-41b5d9709af4
-# ╠═4ebec233-0a9a-41dc-80d0-08339b3b3dd8
+# ╟─b187369f-19ca-4533-8638-41b5d9709af4
+# ╟─b14bde05-d4b8-4d3e-977a-dd27ea887218
+# ╟─8446d704-3cf4-49a5-a2e9-6826a328915e
+# ╟─1eccd565-0ab8-481f-aab8-fdbc5b096be2
+# ╟─4ebec233-0a9a-41dc-80d0-08339b3b3dd8
+# ╟─e940821a-8a8d-412f-9e6f-9365be881255
+# ╟─72058069-368f-4860-9baa-f6e3d51406b4
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
