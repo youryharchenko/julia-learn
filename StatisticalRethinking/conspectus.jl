@@ -637,6 +637,65 @@ md"""
 ## 2 Small Worlds and Large Worlds
 """
 
+# ╔═╡ cc228fe2-eeb8-49d0-becd-6e214b5a1c12
+md"""
+
+---
+
+The small world is the self-contained logical world of the model. Within the small world, all possibilities are nominated. There are no pure surprises, like the existence of a huge continent between Europe and Asia. Within the small world of the model, it is important to be able to verify the model’s logic, making sure that it performs as expected under favorable assumptions. Bayesian models have some advantages in this regard, as they have reasonable claims to optimality: No alternative model could make better use of the information in the data and support better decisions, assuming the small world is an accurate description of the real world.
+
+The large world is the broader context in which one deploys a model. In the large world, there may be events that were not imagined in the small world. Moreover, the model is always an incomplete representation of the large world, and so will make mistakes, even if all kinds of events have been properly nominated. The logical consistency of a model in the small world is no guarantee that it will be optimal in the large world. But it is certainly a warm comfort.
+
+---
+
+Маленький світ – це замкнутий логічний світ моделі. У маленькому світі висуваються всі можливості. Немає таких чистих несподіванок, як існування величезного континенту між Європою та Азією. У маленькому світі моделі важливо мати можливість перевірити логіку моделі, переконавшись, що вона працює належним чином за сприятливих припущень. Байєсовські моделі мають певні переваги в цьому відношенні, оскільки вони мають розумні претензії на оптимальність: жодна альтернативна модель не може краще використовувати інформацію в даних і підтримувати кращі рішення, припускаючи, що маленький світ є точним описом реального світу.
+
+Великий світ — це ширший контекст, у якому розгортається модель. У великому світі можуть відбуватися події, про які не можна було уявити в маленькому світі. Крім того, модель завжди є неповним уявленням про великий світ, і тому буде допускати помилки, навіть якщо всі події були належним чином номіновані. Логічна послідовність моделі в маленькому світі не є гарантією того, що вона буде оптимальною у великому світі. Але це, безумовно, теплий комфорт.
+
+---
+
+"""
+
+# ╔═╡ 10d221a4-2c4e-4cec-bc34-06c0a9e19d66
+md"""
+
+---
+
+	Rethinking: Fast and frugal in the large world. The natural world is complex, as trying to do science serves to remind us. Yet everything from the humble tick to the industrious squirrel to the idle sloth manages to frequently make adaptive decisions. But it’s a good bet that most animals are not Bayesian, if only because being Bayesian is expensive and depends upon having a good model. Instead, animals use various heuristics that are fit to their environments, past or present. These heuristics take adaptive shortcuts and so may outperform a rigorous Bayesian analysis, once costs of information gathering and processing (and overfitting, Chapter 6) are taken into account. Once you already know which information to ignore or attend to, being fully Bayesian is a waste. It’s neither necessary nor sufficient for making good decisions, as real animals demonstrate. But for human animals, Bayesian analysis provides a general way to discover relevant information and process it logically. Just don’t think that it is the only way.
+
+---
+
+	Переосмислення: швидкий і економний у великому світі. Світ природи складний, про що нам нагадують спроби зробити науку. Проте все, від скромного кліща до працьовитої білки та лінивого лінивця, вдається часто приймати адаптивні рішення. Але можна посперечатися, що більшість тварин не байєсівці, хоча б тому, що бути байєсівцями дорого і залежить від наявності хорошої моделі. Натомість тварини використовують різні евристики, які відповідають їхньому середовищу, минулому чи теперішньому. Ці евристики використовують адаптивні скорочення і тому можуть перевершити строгий байєсівський аналіз, якщо врахувати витрати на збір і обробку інформації (і переоснащення, розділ 6). Коли ви вже знаєте, яку інформацію ігнорувати або на яку звертати увагу, бути повністю байєсівським – марна трата. Це ані необхідно, ані достатньо для прийняття правильних рішень, як демонструють реальні тварини. Але для людей-тварин байєсівський аналіз забезпечує загальний спосіб виявлення відповідної інформації та її логічної обробки. Тільки не думайте, що це єдиний спосіб.
+
+---
+
+"""
+
+# ╔═╡ c579eb47-57dd-44ce-8a77-87c6303623c8
+md"""
+### 2.1. The garden of forking data
+"""
+
+# ╔═╡ 6d23e873-6dc5-4267-adf7-22ee6b34ec6a
+md"""
+
+---
+
+A Bayesian analysis is a garden of forking data, in which alternative sequences of events are cultivated. As we learn about what did happen, some of these alternative sequences are pruned. In the end, what remains is only what is logically consistent with our knowledge. This approach provides a quantitative ranking of hypotheses, a ranking that is maximally conservative, given the assumptions and data that go into it. The approach cannot guarantee a correct answer, on large world terms. But it can guarantee the best possible answer, on small world terms, that could be derived from the information fed into it.
+
+---
+
+Байєсівський аналіз — це сад розгалужених даних, у якому культивуються альтернативні послідовності подій. Коли ми дізнаємося про те, що сталося, деякі з цих альтернативних послідовностей скорочуються. Зрештою, залишається лише те, що логічно відповідає нашим знанням. Цей підхід забезпечує кількісне ранжування гіпотез, ранжування, яке є максимально консервативним, враховуючи припущення та дані, які входять до нього. Цей підхід не може гарантувати правильну відповідь у масштабах світу. Але це може гарантувати найкращу можливу відповідь, на умовах малого світу, яку можна було б отримати на основі введеної в нього інформації.
+
+---
+
+"""
+
+# ╔═╡ b06d6c57-1dd5-4fc0-a229-035cfea398ea
+md"""
+#### 2.1.1. Counting possibilities.
+"""
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -907,5 +966,10 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╟─4ebec233-0a9a-41dc-80d0-08339b3b3dd8
 # ╟─e940821a-8a8d-412f-9e6f-9365be881255
 # ╟─72058069-368f-4860-9baa-f6e3d51406b4
+# ╟─cc228fe2-eeb8-49d0-becd-6e214b5a1c12
+# ╟─10d221a4-2c4e-4cec-bc34-06c0a9e19d66
+# ╟─c579eb47-57dd-44ce-8a77-87c6303623c8
+# ╟─6d23e873-6dc5-4267-adf7-22ee6b34ec6a
+# ╟─b06d6c57-1dd5-4fc0-a229-035cfea398ea
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
