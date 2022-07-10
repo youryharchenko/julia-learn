@@ -696,6 +696,96 @@ md"""
 #### 2.1.1. Counting possibilities.
 """
 
+# ╔═╡ 21b37564-2968-46b6-adbb-541b14ac6541
+md"""
+---
+
+Suppose there’s a bag, and it contains four marbles. These marbles come in two colors: blue and white. We know there are four marbles in the bag, but we don’t know how many are of each color. We do know that there are five possibilities:
+
+(1) [w,w,w,w], 
+
+(2) [b,w,w,w], 
+
+(3) [b,b,w,w], 
+
+(4) [b,b,b,w], 
+
+(5) [b,b,b,b]. 
+
+These are the only possibilities consistent with what we know about the contents of the bag. Call these five possibilities the conjectures.
+
+Our goal is to figure out which of these conjectures is most plausible, given some evidence about the contents of the bag. We do have some evidence: A sequence of three marbles is pulled from the bag, one at a time, replacing the marble each time and shaking the bag , in that order. These before drawing another marble. The sequence that emerges is: b,w,b.
+
+We’ve considered five different conjectures about the contents of the bag, ranging from zero blue marbles to four blue marbles. For each of these conjectures, we’ve counted up how many sequences, paths through the garden of forking data, could potentially produce the observed data,
+
+[w,w,w,w] - 0×4×0 = $(0*4*0) 
+
+[b,w,w,w] - 1×3×1 = $(1*3*1)  
+
+[b,b,w,w] - 2×2×2 = $(2*2*2)  
+
+[b,b,b,w] - 3×1×3 = $(3*1*3)  
+
+[b,b,b,b] - 0×4×0 = $(0*4*0) 
+
+So what good are these counts? By comparing these counts, we have part of a solution for a way to rate the relative plausibility of each conjectured bag composition. But it’s only a part of a solution, because in order to compare these counts we first have to decide how many ways each conjecture could itself be realized. We might argue that when we have no reason to assume otherwise, we can just consider each conjecture equally plausible and compare the counts directly. But often we do have reason to assume otherwise.
+
+---
+
+Припустимо, що є мішок і в ньому чотири кульки. Ці кульки бувають двох кольорів: синього та білого. Ми знаємо, що в мішку чотири кульки, але ми не знаємо, скільки кожного кольору. Ми знаємо, що є п'ять можливостей:
+
+(1) [w,w,w,w],
+
+(2) [b,w,w,w],
+
+(3) [b,b,w,w],
+
+(4) [b,b,b,w],
+
+(5) [b,b,b,b].
+
+Це єдині можливості, які відповідають тому, що ми знаємо про вміст мішку. Назвемо ці п'ять можливостей припущеннями.
+
+Наша мета — з’ясувати, яка з цих здогадок є найбільш правдоподібною, враховуючи певні покази щодо вмісту мішку. У нас є деякі покази: послідовність із трьох кульок витягується з мішка по одному, щоразу повертаючи кульки та струшуючи мішок перед витягкванням іншої кульки. Виходить послідовність: b,w,b.
+
+Ми розглянули п’ять різних припущень щодо вмісту мішка, від нуля синіх кульок до чотирьох синіх кульок. Для кожної з цих гіпотез ми підрахували, скільки послідовностей, шляхів через сад розгалужених даних потенційно можуть: створити спостережувані дані,
+
+[w,w,w,w] - 0×4×0 = $(0*4*0) 
+
+[b,w,w,w] - 1×3×1 = $(1*3*1)  
+
+[b,b,w,w] - 2×2×2 = $(2*2*2)  
+
+[b,b,b,w] - 3×1×3 = $(3*1*3)  
+
+[b,b,b,b] - 0×4×0 = $(0*4*0) 
+
+Так яка користь від цих підрахунків? Порівнюючи ці підрахунки, ми маємо частину рішення для оцінки відносної правдоподібності кожного припущеного складу мішка. Але це лише частина рішення, тому що для того, щоб порівняти ці показники, ми спочатку повинні вирішити, скількома способами кожна гіпотеза сама по собі може бути реалізована. Ми можемо стверджувати, що коли у нас немає підстав припускати протилежне, ми можемо просто вважати кожну гіпотезу однаково правдоподібною та безпосередньо порівняти підрахунки. Але часто у нас є підстави вважати інакше.
+
+---
+
+"""
+
+# ╔═╡ 70164e2a-0f0d-4112-a8fd-9c3993ef03ea
+md"""
+
+---
+
+	Rethinking: Justification. Using counts of paths through the garden as measures of relative plausibility can be justified in several ways. The justification here is logical: If we wish to reason about plausibility and remain consistent with ordinary logic—statements about true and false—then we should obey this procedure. There are several other justifications that lead to the same mathematical procedure. Regardless of how you choose to philosophically justify it, notice that it actually works. Justifications and philosophy motivate procedures, but it is the results that matter. The many successful real world applications of Bayesian inference may be all the justification you need. Twentieth century opponents of Bayesian data analysis argued that Bayesian inference was easy to justify, but hard to apply. That is luckily no longer true. Indeed, the opposite is often true—scientists are switching to Bayesianapproaches because it lets them use the models they want. Just be careful not to assume that because Bayesian inference is justified that no other approach can also be justified. Golems come in many types, and some of all types are useful.
+
+---
+
+	Переосмислення: Обґрунтування. Використання підрахунку доріжок через сад як міри відносної правдоподібності може бути виправдано кількома способами. Обґрунтування тут логічне: якщо ми хочемо міркувати про правдоподібність і залишатися послідовними зі звичайною логікою — твердженнями про істинність і хибність — тоді нам слід підкорятися цій процедурі. Є кілька інших обґрунтувань, які призводять до тієї ж математичної процедури. Незалежно від того, як ви вирішите філософськи обґрунтувати це, зауважте, що це насправді працює. Обґрунтування та філософія мотивують процедури, але важливі результати. Чимало успішних застосувань байєсівського логічного висновку в реальному світі можуть бути всім необхідним обґрунтуванням. Противники байєсівського аналізу даних у двадцятому столітті стверджували, що байєсівський висновок легко виправдати, але важко застосувати. На щастя, це вже не так. Насправді часто буває навпаки — вчені переходять на байєсівські підходи, тому що це дозволяє їм використовувати ті моделі, які вони хочуть. Тільки будьте обережні, щоб не припускати, що оскільки байєсівський висновок виправданий, жоден інший підхід вже не може бути виправданим. Големів буває багатьох типів і деякі з них корисні.
+
+---
+
+"""
+
+# ╔═╡ 55038197-7d7b-4509-8135-2ab95dfd7c43
+md"""
+#### 2.1.2. Combining other information.
+"""
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -971,5 +1061,8 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╟─c579eb47-57dd-44ce-8a77-87c6303623c8
 # ╟─6d23e873-6dc5-4267-adf7-22ee6b34ec6a
 # ╟─b06d6c57-1dd5-4fc0-a229-035cfea398ea
+# ╟─21b37564-2968-46b6-adbb-541b14ac6541
+# ╟─70164e2a-0f0d-4112-a8fd-9c3993ef03ea
+# ╟─55038197-7d7b-4509-8135-2ab95dfd7c43
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
