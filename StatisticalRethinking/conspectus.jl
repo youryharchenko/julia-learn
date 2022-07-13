@@ -786,6 +786,59 @@ md"""
 #### 2.1.2. Combining other information.
 """
 
+# ╔═╡ f443d534-424b-4c16-bd02-cd4d11ed36e2
+md"""
+
+---
+
+To grasp this solution, suppose we’re willing to say each conjecture is equally plausible at the start. So we just compare the counts of ways in which each conjecture is compatible with the observed data. This comparison suggests that [b,b,b,w] is slightly more plausible [b,b,w,w], and both are about three times more plausible than [b,w,w,w]. Since these than are our initial counts, and we are going to update them next, let’s label them prior.
+
+Now suppose we draw another marble from the bag to get another observation: b. Now you have two choices. You could start all over again, making a garden with four layers to trace out the paths compatible with the data sequence . Or you could take the previous counts—the prior counts—over conjectures (0, 3, 8, 9, 0) and just update them in light of the new observation. It turns out that these two methods are mathematically identical, as long as the new observation is logically independent of the previous observations.
+
+[w,w,w,w] - 0 - $(0*4*0) - 0×0 = $(0*0) 
+
+[b,w,w,w] - 1 - $(1*3*1) - 3×1 = $(3*1) 
+
+[b,b,w,w] - 2 - $(2*2*2) - 8×2 = $(8*2) 
+
+[b,b,b,w] - 3 - $(3*1*3) - 9×3 = $(9*3)
+
+[b,b,b,b] - 4 - $(0*4*0) - 0×4 = $(0*4)
+
+---
+
+Щоб зрозуміти це рішення, припустімо, що ми хочемо сказати, що кожна гіпотеза однаково правдоподібна на початку. Тому ми просто порівнюємо кількість способів, якими кожна гіпотеза сумісна з даними спостереження. Це порівняння припускає, що [b,b,b,w] є трохи правдоподібнішим за [b,b,w,w], і обидва приблизно втричі правдоподібніші, ніж [b,w,w,w]. Оскільки це наші початкові підрахунки, і ми збираємося оновити їх далі, давайте позначимо їх "prior".
+
+А тепер припустімо, що ми дістаємо ще одну кульку з мішка, щоб отримати ще одне спостереження: b. Тепер у вас є два варіанти. Ви можете почати все спочатку, створивши сад із чотирьох шарів, щоб простежити шляхи, сумісні з послідовністю даних. Або ви можете взяти попередні підрахунки замість припущень (0, 3, 8, 9, 0) просто оновити їх у світлі нового спостереження. Виявляється, що ці два методи є математично ідентичними, якщо нове спостереження є логічно незалежним від попередніх спостережень.
+
+---
+
+"""
+
+# ╔═╡ 948c6c59-2e06-42ed-8185-2e85e807fd69
+md"""
+
+---
+
+	Rethinking: Original ignorance. Which assumption should we use, when there is no previous information about the conjectures? The most common solution is to assign an equal number of ways that each conjecture could be correct, before seeing any data. This is sometimes known as the principle of indifference: When there is no reason to say that one conjecture is more plausible than another, weigh all of the conjectures equally. This book does not use nor endorse “ignorance” priors. As we’ll see in later chapters, the structure of the model and the scientific context always provide information that allows us to do better than ignorance.
+
+	For the sort of problems we examine in this book, the principle of indifference results in inferences very comparable to mainstream non-Bayesian approaches, most of which contain implicit equal weighting of possibilities. For example a typical non-Bayesian confidence interval weighs equally all of the possible values a parameter could take, regardless of how implausible some of them are. In addition, many non-Bayesian procedures have moved away from equal weighting, through the use of penalized likelihood and other methods. We’ll discuss this in Chapter
+
+---
+
+	Переосмислення: початкове незнання. Яке припущення слід використовувати, якщо немає попередньої інформації про припущення? Найпоширенішим рішенням є призначити рівну кількість способів, якими кожна гіпотеза може бути правильною, перш ніж побачити будь-які дані. Це іноді називають принципом байдужості: якщо немає підстав стверджувати, що одна гіпотеза правдоподібніша за іншу, зважте всі гіпотези порівну. У цій книзі не використовуються і не схвалюються «попереднє незнання». Як ми побачимо в наступних розділах, структура моделі та науковий контекст завжди надають інформацію, що дозволяє нам робити краще, ніж незнання.
+
+	Для тих проблем, які ми розглядаємо в цій книзі, принцип байдужості призводить до висновків, які можна порівняти з основними небайєсівськими підходами, більшість із яких містить неявне рівне зважування можливостей. Наприклад, типовий небайєсівський довірчий інтервал зважує однаково всі можливі значення, які може прийняти параметр, незалежно від того, наскільки неправдоподібними є деякі з них. Крім того, багато небайєсівських процедур відійшли від рівного зважування через використання штрафної ймовірності та інших методів. Ми обговоримо це в розділі
+
+---
+
+"""
+
+# ╔═╡ 73ce95f9-2404-42f4-866d-311b04e27979
+md"""
+#### 2.1.3. From counts to probability.
+"""
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -1064,5 +1117,8 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╟─21b37564-2968-46b6-adbb-541b14ac6541
 # ╟─70164e2a-0f0d-4112-a8fd-9c3993ef03ea
 # ╟─55038197-7d7b-4509-8135-2ab95dfd7c43
+# ╟─f443d534-424b-4c16-bd02-cd4d11ed36e2
+# ╟─948c6c59-2e06-42ed-8185-2e85e807fd69
+# ╟─73ce95f9-2404-42f4-866d-311b04e27979
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
